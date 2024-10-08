@@ -17,8 +17,8 @@
                     <td>{{employee.designation}}</td>
                     <td>{{employee.empSalary}}</td>
                     <td>
-                        <button id="btn1" type="button" class="btn btn-success badge rounded-pill" (click)="openModal(employee)">Update</button>
-                        <button id="btn" class="btn btn-danger badge rounded-pill ms-2">Delete</button>
+                        <button id="btn1" type="button" class="btn btn-success badge rounded-pill" data-bs-toggle="modal" data-bs-target="#updateModal" (click)="openModal(employee)">Update</button>
+                        <button id="btn" class="btn btn-danger badge rounded-pill ms-2 ">Delete</button>
                     </td>
                     
                 </tr>
@@ -32,14 +32,17 @@
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header d-flex justify-content-between">
           <h5 class="modal-title" id="updateModalLabel">Update Employee</h5>
-          <button type="button" class="close ms-5 justify-content-right" data-dismiss="modal" aria-label="Close" >
-            <span aria-hidden="true">&times;</span>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" >
           </button>
         </div>
         <div class="modal-body">
-          <form >
+          <form (ngSubmit)="updateEmployee()" #employeeUpdateForm="ngForm">
+            <div class="form-group">
+              <label for="empId">Employee Id:</label>
+              <input [(ngModel)]="employee.empId" name="empId" required class="form-control" id="empId">
+            </div>
             <div class="form-group">
               <label for="empName">Name:</label>
               <input [(ngModel)]="employee.empName" name="empName" required class="form-control" id="empName">
@@ -53,7 +56,7 @@
               <input type="number" [(ngModel)]="employee.empSalary" name="empSalary" required class="form-control" id="empSalary">
             </div>
             <br>
-            <button type="submit" id="btn" class="btn btn-primary badge rounded-pill"(click)="updateEmployee()">Update</button>
+            <button type="submit" id="btn" class="btn btn-primary badge rounded-pill">Update</button>
           </form>
         </div>
       </div>

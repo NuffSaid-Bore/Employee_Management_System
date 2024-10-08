@@ -5,6 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.employee.management.employeemanagementsystem.entities.Employee;
 import com.employee.management.employeemanagementsystem.service.EmployeeService;
@@ -52,7 +53,7 @@ public class EmployeeController {
 
     
     @RequestMapping("/search/{id}")
-    public String getEmployee(@PathVariable Integer id){
+    public String getEmployee(@RequestParam Integer id){
         employeeService.findEmployeeById(id);
         return "Employee Found";
     }
@@ -63,10 +64,9 @@ public class EmployeeController {
         return "All Employees have been deleted!";
     }
 
-    @PutMapping("/update/{id}")
-    public Employee updateEmployeeRecords(@PathVariable Integer id,@RequestBody Employee employee){
-       employee.setEmpId(id);
-        employeeService.updateEmployee(id,employee);
+    @PutMapping("/update")
+    public Employee updateEmployeeRecords(@RequestBody Employee employee){
+        employeeService.updateEmployee(employee);
      return employee;
     }
 

@@ -1,16 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Employee } from './employee';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-  private allEmployeesUrl = "http://localhost:8081/employee/all";
-  private addEmployeeUrl =  "http://localhost:8081/employee/add";
-  private updateEmployeeUrl =  "http://localhost:8081/employee/update/{id}";
-  private findEmployeeByIdUrl =  "http://localhost:8081/employee/search/{id}";
+  private allEmployeesUrl ="http://localhost:8081/employee/all";
+  private addEmployeeUrl ="http://localhost:8081/employee/add";
+  private updateEmployeeUrl = "http://localhost:8081/employee/update/{id}";
+  private findEmployeeByIdUrl ="http://localhost:8081/employee/search/{id}";
+  private deleteEmployeeByIdUrl ="http://localhost:8081/employee/delete{id}";
   
   constructor(private httpClient : HttpClient) { }
 
@@ -30,8 +31,13 @@ export class EmployeeService {
   }
 
   // update Employee
-  updateEmployee(employee: Employee): Observable<Employee> {
-    return this.httpClient.put<Employee>(`${this.updateEmployeeUrl}/${employee.empId}`, employee);
+  updatingEmployee(employee: Employee): Observable<Employee> {
+    console.log('Updating employee:', employee);
+    return this.httpClient.put<Employee>(`${this.updateEmployeeUrl}`, employee);
+  }
+
+  deleteEmployee(id: number): Observable<Employee>{
+    return this.httpClient.delete<Employee>(`${this.deleteEmployeeByIdUrl}/${id}`)
   }
 
 }

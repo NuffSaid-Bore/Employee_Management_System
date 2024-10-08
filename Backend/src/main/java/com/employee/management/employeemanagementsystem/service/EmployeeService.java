@@ -48,19 +48,17 @@ public class EmployeeService {
          return "All Employees Deleted";
     }
 
-    public Employee updateEmployee(@PathVariable Integer id,@RequestBody Employee updatedEmployee) {
+    public Employee updateEmployee(Employee updatedEmployee) {
         // Find the existing employee
-        return employeeRepository.findById(id)
-            .map(employee -> {
-                // Update the employee's fields
+        Integer id = updatedEmployee.getEmpId();
+        Employee employee = employeeRepository.findById(id).get();
+        
                 employee.setEmpName(updatedEmployee.getEmpName());
                 employee.setDesignation(updatedEmployee.getDesignation());
                 employee.setEmpSalary(updatedEmployee.getEmpSalary());
 
                 // Save the updated employee
-             var savedEmployee = employeeRepository.save(employee);
-                return savedEmployee;
-            })
-            .orElseThrow();
+                return employeeRepository.save(employee);
+           
     }
 }
