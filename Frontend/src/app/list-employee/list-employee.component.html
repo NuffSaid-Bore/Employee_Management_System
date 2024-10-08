@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="container d-flex justify-content-center align-items-center">
+        <table class="table table-stripe">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>Designation</th>
+                    <th>Salary</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <td>{{employee.empId}}</td>
+                    <td>{{employee.empName}}</td>
+                    <td>{{employee.designation}}</td>
+                    <td>{{employee.empSalary}}</td>
+                    <td>
+                        <button id="btn1" type="button" class="btn btn-success badge rounded-pill" (click)="openModal(employee)">Update</button>
+                        <button id="btn" class="btn btn-danger badge rounded-pill ms-2">Delete</button>
+                    </td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        <div *ngIf="errorMessage">{{ errorMessage }}</div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateModalLabel">Update Employee</h5>
+          <button type="button" class="close ms-5 justify-content-right" data-dismiss="modal" aria-label="Close" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form >
+            <div class="form-group">
+              <label for="empName">Name:</label>
+              <input [(ngModel)]="employee.empName" name="empName" required class="form-control" id="empName">
+            </div>
+            <div class="form-group">
+              <label for="designation">Designation:</label>
+              <input [(ngModel)]="employee.designation" name="designation" required class="form-control" id="designation">
+            </div>
+            <div class="form-group">
+              <label for="empSalary">Salary:</label>
+              <input type="number" [(ngModel)]="employee.empSalary" name="empSalary" required class="form-control" id="empSalary">
+            </div>
+            <br>
+            <button type="submit" id="btn" class="btn btn-primary badge rounded-pill"(click)="updateEmployee()">Update</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+

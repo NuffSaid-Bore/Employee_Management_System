@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the content horizontally */
+    padding-top: 0; 
+  }
+  
+  .table {
+    width: 100%; /* Make the table full width of the container */
+    max-width: 800px; /* Limit the maximum width for better readability */
+    margin-bottom: 20px; /* Space between the table and the footer */
+    margin-top: 0px;
+  }
+  
+.alert {
+    margin-top: 20px;
+}
+.btn{
+  width: 80px;
+  height: 35px;
+}
+.btn1{
+  width: 80px;
+  height: 35px;
+  margin-right: 10px;
+}
+
+
+
+
+

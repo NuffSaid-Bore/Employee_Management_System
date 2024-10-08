@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the component takes the full height of the viewport */
+}
+
+router-outlet {
+  flex: 1; /* This allows the router outlet to take available space */
+}

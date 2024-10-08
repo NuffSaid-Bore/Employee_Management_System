@@ -1,0 +1,27 @@
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+  <div id="card" class="card">
+    <div class="card-body">
+        <h2>Add Employee</h2>
+        <form (ngSubmit)="onSubmit()" #employeeForm="ngForm">
+          <div class="mb-3">
+            <label for="empName" class="form-label">Employee Name</label>
+            <input type="text" id="empName" class="form-control" required [(ngModel)]="employee.empName" name="empName">
+          </div>
+          <div class="mb-3">
+            <label for="designation" class="form-label">Designation</label>
+            <input type="text" id="designation" class="form-control" required [(ngModel)]="employee.designation" name="designation">
+          </div>
+          <div class="mb-3">
+            <label for="empSalary" class="form-label">Salary</label>
+            <input type="number" id="empSalary" class="form-control" required [(ngModel)]="employee.empSalary" name="empSalary">
+          </div>
+          <button id="btn" type="submit" class="btn bg-info text-light badge rounded-pill">Submit</button>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+  

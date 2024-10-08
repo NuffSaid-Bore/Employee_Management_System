@@ -1,0 +1,10 @@
+.footer {
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.05); /* Adjust as needed */
+    z-index: 1000; /* Ensure it's above other content */
+  }
+  
